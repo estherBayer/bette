@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-/* Importing fonts from local folder */
+/* Font definitions */
 @font-face {
     font-family: 'Romie';
     src: url('fonts/6571f090b4507b5df57e09d7_Romie-Regular-Italic.otf') format('opentype');
@@ -19,6 +19,7 @@
     font-style: bold;
 }
 
+/* Global styles */
 body, html {
     margin: 0;
     padding: 0;
@@ -51,6 +52,7 @@ body, html {
 .navbar .logo {
     font-size: 25px;
     font-family: 'Romie', serif;
+    color: white;
 }
 
 .navbar .menu {
@@ -65,7 +67,7 @@ body, html {
     margin: 4px 0;
 }
 
-.hero-section {
+.hero-section, .content-section {
     position: relative;
     height: 100vh;
     overflow: hidden;
@@ -76,17 +78,25 @@ body, html {
     justify-content: center;
 }
 
-.color-box {
+.hero-box, .content-box {
     height: 100%;
     width: 100%;
-    background-image: url('images/hero.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 70px; /* To account for fixed navbar */
+    padding-top: 4.4rem; /* To account for fixed navbar */
+}
+
+.content-box {
+    background-color: blanchedalmond;
+    padding-top: 9rem;
+}
+
+.hero-box {
+    background-image: url('images/hero.jpg');
 }
 
 .inner-container {
@@ -97,21 +107,12 @@ body, html {
     flex-direction: column;
 }
 
-.rowOne {
+.row, .rowOne, .rowTwo {
     display: flex;
     width: 100%;
-    height: 20%;
     align-items: center;
     justify-content: space-between;
-}
-
-.rowTwo {
-    display: flex;
-    width: 100%;
-    height: 80%;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 5%;
+    height: auto; /* Adjust height for better responsiveness */
 }
 
 .column {
@@ -148,6 +149,10 @@ h1 {
     font-weight: bold;
 }
 
+h1:after {
+    content: ' →';
+}
+
 h2 {
     font-size: 35px;
     margin: 10px 0;
@@ -169,6 +174,30 @@ h4 {
     color: #6F0072;
 }
 
+h5 {
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'Romie', sans-serif;
+    font-size: 70px;
+    line-height: .9;
+    font-weight: bold;
+    color: #6F0072;
+}
+
+h6 {
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'Romie', sans-serif;
+    font-size: 70px;
+    line-height: .9;
+    font-weight: bold;
+}
+
+h5:after {
+    font-family: 'Inter', sans-serif;
+    content: ' →';
+}
+
 p {
     font-size: 25px;
     margin: 10px 0;
@@ -186,43 +215,153 @@ button.work-samples-btn {
     font-family: 'Inter', sans-serif;
 }
 
+ul {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+li {
+    font-size: 25px;
+    font-family: 'Romie', serif;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .inner-container {
-        align-items: center;
+        align-items: flex-start;
     }
 
-    .row {
+    .rowOne, .rowTwo, .row {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+        justify-content: flex-start;
+        height: auto; /* Adjust height for better responsiveness */
+    }
+
+    .column-2-3, .column-1-3, .column-1-2 {
+        max-width: 100%;
+        flex: none; /* Ensure columns take full width on small screens */
     }
 
     .column-1-3 {
-        justify-content: center;
-        margin-top: 20px;
+        margin-top: 0.5rem; /* Add margin between stacked elements */
     }
 
-    .column-1-2 {
-        max-width: 100%;
+    .rowTwo .column {
+        margin-top: 1rem;
     }
 
     h1 {
-        font-size: 50px;
+        font-size: 70px;
+        text-align: left; /* Keep text aligned left */
     }
 
     h2 {
-        font-size: 20px;
+        font-size: 35px;
+        margin-right: 1rem;
+        text-align: left; /* Keep text aligned left */
     }
 
-    h3 {
-        font-size: 25px;
+    h2, h3, p, button {
+        text-align: left; /* Ensure all text elements are left aligned */
     }
 
-    p {
-        font-size: 18px;
+    .work-samples-btn {
+        align-self: flex-start;
     }
 
-    button.work-samples-btn {
-        font-size: 16px;
-        padding: 10px 20px;
+    h1:after {
+        content: ' ↓';
     }
+
+    h1 {
+        display: inline-block;
+        white-space: pre-line; /* Ensure text wraps properly */
+    }
+
+    h5:after {
+        font-family: 'Inter', sans-serif;
+        content: ' ↓';
+    }
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    position: relative;
+}
+
+.portfolio-box {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 4.4rem; /* To account for fixed navbar */
+}
+
+.portfolio-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.portfolio-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.portfolio-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.portfolio-text {
+    width: 100%;
+}
+
+.h1T {
+    font-size: 35px;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+}
+
+.pT {
+    font-size: 20px;
+    margin: 2rem 0;
+    font-family: 'Inter', sans-serif;
+    text-align: left;
+}
+
+.spacer {
+    height: 5rem;
+}
+
+/* Link styles */
+a {
+    color: #006699; /* Set link color */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Add underline on hover */
 }
